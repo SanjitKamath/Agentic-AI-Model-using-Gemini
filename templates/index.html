@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern HR Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>Agentic AI</h1>
+            <p>Your intelligent partner</p>
+        </header>
+        <main id="chatbox" class="chat-box">
+            <!-- Initial bot message -->
+            <div class="message bot-message">
+                <p>Hello! How can I assist you with your tasks today?</p>
+            </div>
+        </main>
+        <footer class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Type your prompt here">
+            <button id="sendButton">Send</button>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

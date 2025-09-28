@@ -1,0 +1,101 @@
+employee_id,employee_name,department,job_level,years_experience,salary,performance_score,role_criticality,last_raise_date,hire_date,office_location,technical_skill_score,communication_skill_score,teamwork_skill_score,leadership_potential,engagement_score,absenteeism_rate_pct,training_hours_completed,manager_review_score,peer_review_score,project_completion_rate_pct,goal_achievement_rate_pct
+E001,Jessica Rodriguez,Support,Senior,10,97880,100,low,2024-05-23,2015-06-13,Bengaluru,3,5,3,3,99,0.0,30,5.0,5.0,100,100
+E002,Elizabeth Carter,Sales,Lead,9,129664,77,medium,2025-05-23,2015-12-11,San Francisco,3,4,5,5,88,1.2,4,4.8,4.4,93,91
+E003,Emily Rivera,Marketing,Manager,8,131306,100,medium,2024-11-23,2017-08-03,Tokyo,4,5,5,4,97,0.6,3,5.0,4.3,96,91
+E004,Betty Miller,Product,Junior,0,53215,70,low,2025-08-09,2024-12-16,Tokyo,3,4,5,1,93,2.0,56,3.4,3.8,96,84
+E005,John Sanchez,Engineering,Junior,3,66122,90,low,2023-10-22,2022-03-15,New York,5,4,5,1,92,1.3,25,5.0,5.0,90,93
+E006,Karen Johnson,Sales,Manager,8,140669,75,medium,2024-07-10,2017-02-19,San Francisco,3,5,5,4,81,1.0,44,4.7,4.2,97,87
+E007,John Flores,Engineering,Mid-level,2,85961,96,medium,2024-05-25,2022-11-08,Tokyo,4,3,3,3,100,0.0,39,4.5,4.7,89,92
+E008,Patricia Garcia,Product,Senior,14,128106,99,medium,2023-12-20,2011-02-25,Bengaluru,5,3,3,3,100,0.0,9,5.0,4.9,100,100
+E009,Ashley Wilson,Marketing,Manager,8,128277,64,medium,2025-08-25,2017-05-01,Tokyo,3,4,3,5,75,1.8,16,3.4,3.8,95,77
+E010,Michael Flores,Support,Senior,13,103250,78,low,2024-02-16,2012-08-15,Bengaluru,5,4,3,3,89,0.8,8,3.9,3.5,90,91
+E011,Michelle Jackson,Human Resources,Manager,10,132110,86,medium,2024-10-30,2015-07-09,London,3,5,3,5,88,0.5,23,3.9,3.9,100,84
+E012,Jessica Flores,Human Resources,Junior,3,51670,95,low,2025-02-07,2022-03-16,San Francisco,4,5,5,3,89,0.3,26,5.0,5.0,100,99
+E013,Donna Lewis,Human Resources,Lead,24,136661,98,low,2024-07-25,2001-09-15,London,4,4,3,4,92,0.0,39,4.7,4.4,100,98
+E014,Andrew Allen,Sales,Lead,8,132216,83,medium,2025-07-11,2017-06-13,London,4,4,3,4,99,0.2,44,4.8,4.1,92,95
+E015,Deborah King,Human Resources,Junior,0,49478,90,low,2026-05-27,2025-09-25,New York,3,4,5,3,96,0.5,35,4.8,4.3,94,92
+E016,Elizabeth King,Marketing,Senior,10,106620,88,low,2024-05-01,2015-03-11,Tokyo,4,4,3,3,100,0.5,5,4.3,3.9,100,96
+E017,Betty Torres,Product,Mid-level,6,92214,72,low,2024-10-19,2019-03-01,Tokyo,4,5,3,1,79,2.1,19,4.3,3.5,94,83
+E018,Sandra Baker,Product,Manager,23,175898,80,high,2025-04-18,2001-10-08,London,5,3,4,4,97,1.0,52,4.8,3.9,100,98
+E019,Linda Garcia,Marketing,Senior,14,114557,86,low,2025-06-29,2011-03-03,London,3,4,5,3,87,0.9,41,4.2,4.1,93,87
+E020,Karen Baker,Marketing,Lead,15,129154,67,high,2024-12-05,2010-02-05,Bengaluru,3,5,5,5,81,1.7,22,4.1,4.0,89,92
+E021,Kimberly Allen,Sales,Manager,22,161658,79,high,2025-08-28,2002-12-08,New York,4,4,4,4,94,1.1,18,3.9,4.9,88,82
+E022,Thomas Lewis,Engineering,Senior,13,131031,71,low,2025-07-28,2011-11-07,San Francisco,5,3,5,4,78,2.1,6,4.2,4.4,93,85
+E023,Michelle Sanchez,Human Resources,Senior,8,96752,95,low,2024-10-25,2017-01-21,Tokyo,3,4,3,3,90,1.1,42,4.8,4.8,92,88
+E024,Joseph Lopez,Engineering,Junior,1,59746,74,low,2025-07-25,2023-10-30,Bengaluru,4,4,5,2,96,1.3,58,4.0,3.6,87,86
+E025,Mary Campbell,Marketing,Mid-level,6,77170,66,medium,2023-11-05,2019-06-24,San Francisco,3,5,4,1,76,2.6,43,3.7,3.9,85,80
+E026,Lisa Moore,Product,Mid-level,6,86857,85,medium,2024-06-05,2019-09-17,London,4,5,4,2,86,1.3,0,4.4,5.0,98,99
+E027,John Rodriguez,Sales,Mid-level,3,85711,88,low,2024-03-28,2021-11-16,San Francisco,4,5,5,1,91,1.0,16,4.3,4.4,98,90
+E028,Margaret Davis,Human Resources,Senior,12,106750,72,high,2025-05-31,2012-10-30,London,3,5,4,3,88,2.0,51,4.6,3.7,100,91
+E029,Joshua Wright,Support,Senior,14,104306,100,high,2024-11-01,2010-12-04,New York,5,4,5,3,91,0.0,2,4.5,4.7,100,100
+E030,Richard Mitchell,Human Resources,Junior,0,45290,95,high,2025-11-06,2025-02-14,San Francisco,4,4,4,3,89,0.0,6,5.0,4.6,95,96
+E031,Lisa Nelson,Engineering,Senior,12,127931,65,high,2025-05-24,2013-08-12,London,4,4,3,4,84,2.6,48,3.9,3.0,88,79
+E032,Joseph Perez,Marketing,Lead,13,126971,63,medium,2025-02-27,2012-09-05,London,3,4,3,4,82,1.0,29,3.3,3.2,84,74
+E033,Mary Smith,Marketing,Senior,12,106483,90,medium,2024-10-23,2013-04-17,Tokyo,4,5,5,4,93,0.1,54,4.8,4.0,97,97
+E034,Mary Taylor,Engineering,Senior,11,120109,98,high,2024-05-27,2014-02-21,San Francisco,5,4,5,4,100,0.0,25,4.7,4.8,100,100
+E035,Joshua Lopez,Human Resources,Junior,1,46324,65,low,2024-01-23,2024-01-03,Bengaluru,3,4,3,2,73,1.5,55,3.8,3.5,99,91
+E036,Andrew Brown,Human Resources,Junior,1,53302,92,low,2025-01-22,2024-06-17,Tokyo,3,5,3,3,94,0.3,22,5.0,4.1,91,96
+E037,Kimberly Allen,Support,Lead,25,137220,91,medium,2024-11-23,2000-08-17,Tokyo,4,5,3,4,100,0.8,32,4.0,5.0,97,93
+E038,Kimberly Carter,Support,Lead,16,125303,69,low,2024-05-25,2009-03-11,Tokyo,3,3,4,4,74,1.5,17,4.0,3.2,86,81
+E039,Jennifer Scott,Product,Mid-level,4,88287,98,medium,2023-12-04,2020-12-03,San Francisco,3,5,3,4,100,0.5,52,5.0,4.1,100,91
+E040,William King,Sales,Senior,13,119346,86,medium,2024-03-05,2011-10-25,New York,3,4,3,3,99,0.0,11,3.8,4.8,100,98
+E041,Deborah Thompson,Marketing,Senior,10,106338,87,high,2024-02-06,2015-09-11,Tokyo,4,5,5,3,98,1.1,37,4.5,3.9,96,89
+E042,James Gonzalez,Support,Senior,7,91125,71,high,2025-07-26,2018-01-31,Bengaluru,5,3,3,3,83,1.1,24,3.9,4.5,100,89
+E043,Daniel Baker,Support,Junior,2,43425,72,high,2024-07-31,2023-04-23,Tokyo,3,4,3,2,82,1.0,59,3.4,3.8,95,88
+E044,Mark Mitchell,Marketing,Senior,6,99698,81,low,2025-06-11,2019-05-24,London,3,4,5,4,85,0.0,47,4.8,4.4,94,98
+E045,Michelle Perez,Product,Junior,0,54623,85,medium,2025-05-17,2025-03-31,Bengaluru,4,5,5,3,85,0.8,8,4.5,4.2,93,87
+E046,Elizabeth Adams,Sales,Manager,19,155867,89,high,2024-08-18,2005-10-27,Tokyo,4,5,4,4,89,0.6,51,4.2,4.3,97,94
+E047,Ronald Martin,Human Resources,Lead,8,112972,99,medium,2025-03-05,2016-11-23,London,3,5,5,4,95,0.8,47,5.0,4.9,91,96
+E048,Amanda Brown,Marketing,Senior,11,111297,69,medium,2025-03-26,2014-03-15,San Francisco,3,4,5,4,81,0.9,19,4.3,4.5,93,94
+E049,Deborah Adams,Support,Senior,15,103233,98,low,2025-01-08,2009-10-23,Bengaluru,5,5,3,3,97,0.6,50,4.3,5.0,95,100
+E050,Kimberly Lee,Human Resources,Senior,5,93820,75,high,2024-11-21,2019-10-01,Bengaluru,3,5,4,3,87,1.2,1,3.5,3.3,92,90
+E051,Barbara Davis,Sales,Mid-level,2,77922,83,low,2025-01-26,2022-10-06,Tokyo,4,4,5,2,92,0.0,48,5.0,4.7,100,99
+E052,Joseph White,Support,Lead,13,119384,95,medium,2024-01-18,2012-04-24,London,3,4,4,4,92,0.3,58,5.0,5.0,100,100
+E053,Nancy Flores,Marketing,Lead,21,136969,64,high,2025-04-15,2004-03-12,Bengaluru,3,4,4,5,90,1.8,56,3.1,3.4,97,82
+E054,Ashley Hall,Marketing,Manager,8,132506,64,high,2024-03-04,2017-04-17,New York,4,4,5,4,73,1.1,48,3.8,4.2,88,89
+E055,Lisa Flores,Engineering,Manager,20,170754,69,low,2024-05-21,2005-06-25,New York,4,4,3,4,78,1.8,39,4.3,3.6,100,88
+E056,Barbara Smith,Marketing,Lead,15,128064,82,medium,2024-09-28,2010-01-12,San Francisco,4,4,3,4,90,0.4,29,4.7,3.7,94,84
+E057,Joshua Baker,Support,Junior,1,46159,63,low,2025-06-29,2024-03-07,London,5,4,5,2,71,1.0,35,4.3,4.1,88,90
+E058,Donald Thompson,Engineering,Lead,11,150663,81,high,2025-01-27,2013-11-20,San Francisco,5,4,3,4,93,1.8,44,3.8,4.1,100,91
+E059,Mark King,Marketing,Mid-level,7,83851,81,high,2024-10-07,2018-07-21,Bengaluru,4,4,3,2,89,0.8,22,4.7,3.6,92,98
+E060,Daniel Clark,Marketing,Senior,11,101590,98,high,2024-08-07,2014-04-15,London,3,4,3,4,98,0.0,29,5.0,4.3,100,100
+E061,Margaret Sanchez,Sales,Mid-level,7,83548,89,low,2024-02-10,2018-02-24,Bengaluru,4,4,5,1,96,0.0,16,5.0,4.3,94,100
+E062,Michael Sanchez,Sales,Lead,19,152906,90,medium,2024-01-06,2006-07-04,New York,3,4,3,5,100,0.6,38,4.2,3.9,100,99
+E063,Margaret Jones,Engineering,Junior,0,59228,65,medium,2026-04-06,2025-07-04,Bengaluru,4,4,3,2,88,1.8,23,2.8,3.8,89,77
+E064,Michelle Harris,Support,Senior,9,93541,73,low,2025-01-15,2016-07-16,Tokyo,4,3,5,3,76,0.9,41,3.6,3.6,92,80
+E065,Emily Jones,Marketing,Manager,25,155187,97,low,2025-05-28,2000-01-11,London,3,4,5,5,93,0.0,48,5.0,4.8,91,97
+E066,William Nguyen,Engineering,Lead,15,159361,89,low,2024-06-30,2009-11-09,Bengaluru,5,4,5,4,99,0.0,47,4.8,4.7,94,97
+E067,Brian Lopez,Product,Manager,12,157781,67,medium,2025-05-17,2013-09-22,London,3,4,3,5,76,2.2,12,4.3,3.4,90,89
+E068,Amanda Hall,Human Resources,Lead,25,144071,74,medium,2024-07-27,2000-07-13,San Francisco,4,4,3,4,81,0.7,59,3.8,3.8,90,91
+E069,Emily Nelson,Support,Senior,11,92973,77,medium,2024-12-28,2014-07-30,London,5,5,4,4,98,0.5,4,3.9,3.5,100,87
+E070,Elizabeth Young,Product,Senior,11,124217,85,medium,2024-09-03,2014-05-20,Bengaluru,3,4,5,3,93,0.5,2,4.9,4.6,98,100
+E071,Ronald Ramirez,Engineering,Junior,1,61875,67,high,2025-08-08,2023-11-29,Tokyo,4,4,3,1,90,1.4,37,4.3,3.6,87,86
+E072,William Brown,Engineering,Junior,0,62685,66,medium,2025-02-17,2024-11-15,Tokyo,5,3,4,1,77,1.0,14,2.9,3.4,88,77
+E073,George Martin,Engineering,Junior,0,55632,95,low,2025-08-16,2024-11-20,Tokyo,4,4,5,4,95,0.4,48,4.7,5.0,92,96
+E074,Jessica Johnson,Marketing,Mid-level,7,77693,76,low,2024-12-07,2017-09-30,London,4,4,5,2,83,0.6,60,4.1,4.2,88,88
+E075,Christopher Williams,Sales,Manager,12,153519,65,high,2025-05-19,2012-11-20,New York,3,5,4,4,82,0.9,46,3.7,4.4,94,91
+E076,Anthony Green,Marketing,Senior,10,105752,60,low,2024-10-26,2015-05-21,Tokyo,3,4,4,4,74,2.3,14,3.5,2.9,86,84
+E077,Brian Martinez,Sales,Senior,8,115452,92,high,2024-05-11,2017-08-05,New York,4,5,3,3,93,1.3,9,3.9,4.6,92,99
+E078,Robert Perez,Human Resources,Manager,11,132350,78,high,2025-02-01,2014-06-18,Tokyo,3,5,5,5,81,0.3,33,4.4,4.2,95,87
+E079,Donald King,Human Resources,Lead,14,126949,100,high,2024-02-11,2011-05-01,London,4,5,3,4,100,0.7,15,5.0,5.0,100,97
+E080,Michelle Johnson,Product,Lead,13,144570,68,medium,2023-12-24,2011-10-31,New York,4,4,5,4,77,2.2,4,3.2,3.5,100,92
+E081,Kevin Wilson,Human Resources,Lead,14,123161,69,high,2024-08-08,2010-10-30,San Francisco,4,4,5,5,76,1.5,17,4.0,3.1,90,80
+E082,Michael Brown,Product,Mid-level,4,83559,86,high,2024-03-02,2020-12-07,San Francisco,3,3,3,3,100,0.0,1,4.8,3.7,95,100
+E083,Edward Green,Sales,Lead,18,145803,90,high,2024-10-28,2007-04-04,New York,4,5,3,5,100,0.1,30,5.0,5.0,95,94
+E084,Christopher Lee,Product,Senior,5,107136,85,high,2024-12-15,2020-02-20,Tokyo,4,4,4,3,94,1.6,31,5.0,5.0,90,96
+E085,Michelle Smith,Support,Junior,1,48086,89,high,2024-03-23,2023-12-15,Tokyo,4,5,5,1,100,0.6,1,4.3,4.6,90,91
+E086,William Hill,Engineering,Junior,2,64059,69,low,2025-07-22,2023-06-19,San Francisco,4,3,4,3,88,1.0,59,4.1,3.6,89,78
+E087,Thomas King,Human Resources,Senior,10,104033,81,low,2024-03-14,2015-01-16,London,4,5,4,3,94,1.6,47,4.5,3.7,100,91
+E088,Daniel Brown,Human Resources,Manager,8,126486,85,high,2025-03-06,2017-03-29,San Francisco,3,5,3,4,95,0.3,23,4.0,5.0,95,100
+E089,William Martinez,Human Resources,Junior,2,47665,78,low,2025-02-09,2022-11-27,New York,3,5,5,2,95,1.7,20,3.8,4.8,100,91
+E090,Susan Nguyen,Sales,Junior,0,55108,74,low,2026-03-16,2025-09-12,New York,4,4,3,2,82,1.7,26,3.6,3.6,100,91
+E091,Jessica Thomas,Product,Mid-level,6,88566,67,medium,2025-05-14,2019-03-28,Bengaluru,3,5,3,2,92,1.9,3,3.5,4.3,100,86
+E092,Christopher Roberts,Product,Junior,3,60810,90,low,2025-03-19,2021-12-17,Bengaluru,3,3,3,3,87,1.0,12,4.7,4.4,100,88
+E093,Kevin Campbell,Support,Junior,3,51550,96,medium,2025-06-17,2021-09-30,London,5,5,3,3,95,0.0,10,5.0,4.2,100,92
+E094,Melissa Roberts,Engineering,Junior,1,57849,71,low,2024-06-02,2023-11-06,Bengaluru,5,4,3,1,93,2.2,46,3.4,4.1,96,78
+E095,Ashley Miller,Product,Lead,17,150832,94,medium,2025-06-14,2008-03-11,San Francisco,5,5,5,4,100,0.3,25,4.0,5.0,100,98
+E096,Linda Hall,Sales,Junior,1,52829,72,medium,2024-10-01,2024-01-14,London,3,4,3,3,93,1.4,25,3.7,3.9,99,93
+E097,Mary Martin,Marketing,Mid-level,2,69086,64,high,2024-07-22,2023-01-23,New York,4,5,4,2,85,2.5,54,3.4,3.9,88,83
+E098,Nancy Sanchez,Marketing,Manager,20,148926,89,high,2025-02-07,2005-01-04,San Francisco,3,5,5,4,86,0.0,28,4.9,4.7,91,95
+E099,Michael Jones,Human Resources,Senior,13,100259,79,high,2024-11-26,2012-06-10,Bengaluru,4,5,5,4,96,1.6,58,4.1,3.8,100,94
+E100,Mary Johnson,Sales,Senior,14,119525,82,high,2023-11-02,2011-08-09,San Francisco,4,5,3,3,98,0.1,30,4.5,5.0,90,90
