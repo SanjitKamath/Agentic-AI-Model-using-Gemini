@@ -139,4 +139,4 @@ Agentic-AI-Model-using-Gemini/
 ```
 
 ---
-
+Note: employees.csv is a dummy database containing AI generated data of 100 emplpoyees, simply to provide a demo of the project
