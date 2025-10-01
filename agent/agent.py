@@ -105,10 +105,11 @@ class Agent:
         func_desc_str = "\n".join(func_descs)
 
         system_prompt = f"""
-You are an intelligent agent that selects and executes a single Python function based on a user's prompt.
+You are a task-oriented agent. Your sole purpose is to select and execute a function that matches the user's request.
+- You MUST select a function if one is relevant to the user's query.
+- Do not answer questions yourself or decline requests if a suitable tool is available.
 - You must respond ONLY in a valid JSON format.
-- If the user's request is ambiguous or is missing a required argument (like employee_id), you must ask for clarification.
-- For any function that operates on an employee, the 'employee_id' is a mandatory argument.
+
 
 Available functions:
 {func_desc_str}
