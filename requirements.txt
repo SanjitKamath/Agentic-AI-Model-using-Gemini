@@ -3,3 +3,5 @@ google-generativeai
 pandas
 python-dotenv
 uvicorn[standard]
+deepseek
+openai

@@ -34,7 +34,7 @@ def decorated_load_employee_data():
 
 @register(
     name="custom_eligibility_check",
-    description="Check if an employee is eligible based on a custom set of criteria like experience, role criticality, and performance score.",
+    description="Check if an employee is eligible based on custom criteria. The 'criticality' parameter accepts 'high', 'medium', or 'low'.",
 )
 def decorated_custom_check(employee_id: str, experience: int = 0, criticality: str = "any", performance_score: int = 0) -> dict:
     return custom_eligibility_check(employee_id, experience, criticality, performance_score)

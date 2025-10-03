@@ -3,29 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern HR Agent</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Agentic AI Assistant</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Chat Container */
+        #chat-container {
+            width: 90%;
+            max-width: 600px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden; /* Ensures child elements respect the border radius */
+        }
+
+        /* Control Bar Styles */
+        #controls {
+            padding: 12px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #fafafa;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Custom Dropdown Container */
+        .custom-select-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Custom Dropdown Styling */
+        #model-selector {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 8px 30px 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        #model-selector:hover {
+            border-color: #007bff;
+        }
+
+        #model-selector:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Custom Dropdown Arrow */
+        .custom-select-wrapper::after {
+            content: '▼';
+            font-size: 12px;
+            color: #555;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Allows clicks to pass through to the select element */
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        /* Error Message Box */
+        #error-message {
+            padding: 10px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #c62828;
+            border-radius: 5px;
+            margin: 10px 20px;
+            display: none; /* Hidden by default */
+        }
+
+        /* Chat Box and Messages */
+        #chat-box { flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column;}
+        .message { margin-bottom: 15px; padding: 10px 15px; border-radius: 18px; max-width: 80%; line-height: 1.4; }
+        .user-message { background-color: #007bff; color: white; align-self: flex-end; margin-left: auto; }
+        .bot-message { background-color: #e9e9eb; color: black; align-self: flex-start; }
+        
+        /* Input Area */
+        #input-area { display: flex; padding: 10px; border-top: 1px solid #e0e0e0; background-color: #fafafa; }
+        #chat-input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 20px; outline: none; transition: border-color 0.2s; }
+        #chat-input:focus { border-color: #007bff; }
+        #send-button { padding: 10px 20px; margin-left: 10px; background-color: #007bff; color: white; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.2s; }
+        #send-button:hover { background-color: #0056b3; }
+    </style>
 </head>
 <body>
-    <div class="chat-container">
-        <header class="chat-header">
-            <h1>Agentic AI</h1>
-            <p>Your intelligent partner</p>
-        </header>
-        <main id="chatbox" class="chat-box">
-            <!-- Initial bot message -->
-            <div class="message bot-message">
-                <p>Hello! How can I assist you with your tasks today?</p>
+    <div id="chat-container">
+        <div id="controls">
+            <label for="model-selector">Select Model:</label>
+            <div class="custom-select-wrapper">
+                <select id="model-selector">
+                    <option value="gemini" selected>Gemini</option>
+                    <option value="openai">OpenAI (GPT)</option>
+                    <option value="deepseek">DeepSeek</option>
+                </select>
             </div>
-        </main>
-        <footer class="chat-input-area">
-            <input type="text" id="userInput" placeholder="Type your prompt here">
-            <button id="sendButton">Send</button>
-        </footer>
+        </div>
+        <div id="error-message"></div>
+        <div id="chat-box">
+            <div class="message bot-message">Hello! How can I assist you with your tasks today?</div>
+        </div>
+        <div id="input-area">
+            <input type="text" id="chat-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div>
     </div>
     <script src="/static/script.js"></script>
 </body>
 </html>
+

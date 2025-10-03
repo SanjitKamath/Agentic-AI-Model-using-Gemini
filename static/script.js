@@ -1,59 +1,96 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const chatbox = document.getElementById("chatbox");
-    const userInput = document.getElementById("userInput");
-    const sendButton = document.getElementById("sendButton");
+// Wait for the entire HTML document to be loaded before running the script
+document.addEventListener('DOMContentLoaded', () => {
 
-    const appendMessage = (sender, message) => {
-        const messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", `${sender}-message`);
-        
-        const p = document.createElement("p");
-        p.innerHTML = message; // Use innerHTML to render any potential HTML in the message
-        messageDiv.appendChild(p);
-        
-        chatbox.appendChild(messageDiv);
-        chatbox.scrollTop = chatbox.scrollHeight;
-    };
+    // Get references to all the necessary HTML elements
+    const modelSelector = document.getElementById('model-selector');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-button');
+    const chatBox = document.getElementById('chat-box');
+    const errorMessage = document.getElementById('error-message');
 
-    const sendMessage = async () => {
-        const userMessage = userInput.value.trim();
-        if (!userMessage) return;
+    const SESSION_STORAGE_KEY = 'agent-model-preference';
 
-        appendMessage("user", userMessage);
-        userInput.value = "";
+    // --- Function to display a message in the chat box ---
+    function addMessage(text, sender) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', `${sender}-message`);
+        messageElement.textContent = text;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
+    }
 
-        // Add a "thinking..." indicator
-        const thinkingIndicator = document.createElement("div");
-        thinkingIndicator.classList.add("message", "bot-message");
-        thinkingIndicator.innerHTML = `<p class="thinking">Thinking...</p>`;
-        chatbox.appendChild(thinkingIndicator);
-        chatbox.scrollTop = chatbox.scrollHeight;
+    // --- Function to show or hide the error message box ---
+    function displayError(message) {
+        if (message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+        }
+    }
+
+    // --- Function to send the user's message to the backend ---
+    async function sendMessage() {
+        const query = chatInput.value.trim();
+        if (!query) return; // Don't send empty messages
+
+        const selectedProvider = modelSelector.value;
+        addMessage(query, 'user');
+        chatInput.value = ''; // Clear the input field
+        displayError(null); // Clear any previous errors
 
         try {
-            const response = await fetch("/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: userMessage }),
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    query: query,
+                    provider: selectedProvider
+                }),
             });
 
+            if (!response.ok) {
+                // Handle HTTP errors like 500 Internal Server Error
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Server responded with status ${response.status}`);
+            }
+
             const data = await response.json();
-            const botReply = data.result || data.error || "An unexpected error occurred.";
+            if (data.error) {
+                // Handle application-specific errors returned from the agent
+                throw new Error(data.error);
+            }
             
-            // Remove the thinking indicator and add the actual reply
-            chatbox.removeChild(thinkingIndicator);
-            appendMessage("bot", botReply);
+            addMessage(data.result, 'bot');
 
         } catch (error) {
             console.error("Error:", error);
-            chatbox.removeChild(thinkingIndicator);
-            appendMessage("bot", "Sorry, I encountered an error. Please try again.");
+            displayError(error.message);
+            addMessage("Sorry, I encountered an error. Please check the error message above.", 'bot');
         }
-    };
+    }
 
-    sendButton.addEventListener("click", sendMessage);
-    userInput.addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
+    // --- Event Listeners ---
+
+    // 1. Send message when the "Send" button is clicked
+    sendButton.addEventListener('click', sendMessage);
+
+    // 2. Send message when the "Enter" key is pressed in the input field
+    chatInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
             sendMessage();
         }
     });
+
+    // 3. Save the user's model preference to sessionStorage whenever it changes
+    modelSelector.addEventListener('change', () => {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, modelSelector.value);
+    });
+
+    // 4. Load the user's preference from sessionStorage when the page loads
+    const savedPreference = sessionStorage.getItem(SESSION_STORAGE_KEY);
+    if (savedPreference) {
+        modelSelector.value = savedPreference;
+    }
 });
+
