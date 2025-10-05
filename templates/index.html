@@ -1,139 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agentic AI Assistant</title>
+    <title>Agentic AI Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styles */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
+            font-family: 'Inter', sans-serif;
         }
-
-        /* Chat Container */
-        #chat-container {
-            width: 90%;
-            max-width: 600px;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            background-color: #fff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden; /* Ensures child elements respect the border radius */
+        #chat-box::-webkit-scrollbar {
+            width: 6px;
         }
-
-        /* Control Bar Styles */
-        #controls {
-            padding: 12px 20px;
-            border-bottom: 1px solid #e0e0e0;
-            background-color: #fafafa;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        #chat-box::-webkit-scrollbar-track {
+            background: #1e1f20;
         }
-
-        /* Custom Dropdown Container */
-        .custom-select-wrapper {
-            position: relative;
-            display: inline-block;
+        #chat-box::-webkit-scrollbar-thumb {
+            background-color: #4a4a4a;
+            border-radius: 20px;
         }
-
-        /* Custom Dropdown Styling */
-        #model-selector {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            padding: 8px 30px 8px 12px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            cursor: pointer;
-            font-size: 14px;
-            transition: border-color 0.2s, box-shadow 0.2s;
+        #model-menu {
+            transform-origin: top left;
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
         }
-
-        #model-selector:hover {
-            border-color: #007bff;
+        .message-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
         }
-
-        #model-selector:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Custom Dropdown Arrow */
-        .custom-select-wrapper::after {
-            content: '▼';
-            font-size: 12px;
-            color: #555;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none; /* Allows clicks to pass through to the select element */
-        }
-
-        label {
-            font-weight: 500;
-            color: #333;
-        }
-        
-        /* Error Message Box */
-        #error-message {
-            padding: 10px;
-            background-color: #ffebee;
-            color: #c62828;
-            border: 1px solid #c62828;
-            border-radius: 5px;
-            margin: 10px 20px;
-            display: none; /* Hidden by default */
-        }
-
-        /* Chat Box and Messages */
-        #chat-box { flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column;}
-        .message { margin-bottom: 15px; padding: 10px 15px; border-radius: 18px; max-width: 80%; line-height: 1.4; }
-        .user-message { background-color: #007bff; color: white; align-self: flex-end; margin-left: auto; }
-        .bot-message { background-color: #e9e9eb; color: black; align-self: flex-start; }
-        
-        /* Input Area */
-        #input-area { display: flex; padding: 10px; border-top: 1px solid #e0e0e0; background-color: #fafafa; }
-        #chat-input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 20px; outline: none; transition: border-color 0.2s; }
-        #chat-input:focus { border-color: #007bff; }
-        #send-button { padding: 10px 20px; margin-left: 10px; background-color: #007bff; color: white; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.2s; }
-        #send-button:hover { background-color: #0056b3; }
     </style>
 </head>
-<body>
-    <div id="chat-container">
-        <div id="controls">
-            <label for="model-selector">Select Model:</label>
-            <div class="custom-select-wrapper">
-                <select id="model-selector">
+<body class="bg-gray-900 text-gray-200 flex flex-col items-center justify-center h-screen p-4">
+
+    <div id="chat-container" class="w-full max-w-4xl h-full flex flex-col bg-[#1e1f20] rounded-xl shadow-2xl">
+        <!-- Header / Controls -->
+        <header class="flex justify-between items-center p-4 border-b border-gray-700">
+            <!-- Model Selector Dropdown -->
+            <div class="relative">
+                <button id="model-selector-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                    <span id="selected-model-name" class="font-medium">Gemini</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div id="model-menu" class="absolute top-full left-0 mt-2 w-64 bg-gray-800 border border-gray-700 rounded-lg shadow-xl hidden opacity-0 scale-95 z-10">
+                    <a href="#" class="model-option flex items-center justify-between p-3 hover:bg-gray-700 transition-colors" data-value="gemini">
+                        <div>
+                            <p class="font-semibold">Gemini</p>
+                            <p class="text-xs text-gray-400">Fast and capable</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check text-blue-400 hidden"><path d="M20 6 9 17l-5-5"/></svg>
+                    </a>
+                    <a href="#" class="model-option flex items-center justify-between p-3 hover:bg-gray-700 transition-colors" data-value="openai">
+                        <div>
+                            <p class="font-semibold">OpenAI (GPT)</p>
+                            <p class="text-xs text-gray-400">Advanced reasoning</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check text-blue-400 hidden"><path d="M20 6 9 17l-5-5"/></svg>
+                    </a>
+                    <a href="#" class="model-option flex items-center justify-between p-3 hover:bg-gray-700 transition-colors" data-value="deepseek">
+                        <div>
+                            <p class="font-semibold">DeepSeek</p>
+                            <p class="text-xs text-gray-400">Strong coding model</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check text-blue-400 hidden"><path d="M20 6 9 17l-5-5"/></svg>
+                    </a>
+                </div>
+                 <!-- This is a hidden select for functionality -->
+                 <select id="model-selector" class="hidden">
                     <option value="gemini" selected>Gemini</option>
                     <option value="openai">OpenAI (GPT)</option>
                     <option value="deepseek">DeepSeek</option>
                 </select>
             </div>
-        </div>
-        <div id="error-message"></div>
-        <div id="chat-box">
-            <div class="message bot-message">Hello! How can I assist you with your tasks today?</div>
-        </div>
-        <div id="input-area">
-            <input type="text" id="chat-input" placeholder="Type your message...">
-            <button id="send-button">Send</button>
-        </div>
+        </header>
+
+        <!-- Error Message Box -->
+        <div id="error-message" class="p-3 bg-red-900/50 text-red-300 border border-red-700 rounded-lg m-4 hidden"></div>
+
+        <!-- Chat Area -->
+        <main id="chat-box" class="flex-grow p-6 overflow-y-auto">
+             <!-- Welcome Screen -->
+            <div id="welcome-screen" class="flex flex-col items-center justify-center h-full text-center">
+                <div class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-4">
+                    Hello!
+                </div>
+                <p class="text-2xl text-gray-400">How can I help you today?</p>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer id="input-area" class="p-4">
+            <div class="bg-gray-800 rounded-2xl p-2 flex items-center w-full">
+                <input type="text" id="chat-input" class="flex-grow bg-transparent text-gray-200 placeholder-gray-500 focus:outline-none px-4 py-2" placeholder="Enter a prompt here...">
+                <button id="send-button" class="p-2 bg-gray-700 text-white rounded-full transition-opacity opacity-50 cursor-not-allowed" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+                </button>
+            </div>
+        </footer>
     </div>
-    <script src="/static/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatInput = document.getElementById('chat-input');
+            const sendButton = document.getElementById('send-button');
+            const chatBox = document.getElementById('chat-box');
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const errorMessageDiv = document.getElementById('error-message');
+            
+            // Model Selector UI Logic
+            const modelSelectorBtn = document.getElementById('model-selector-btn');
+            const modelMenu = document.getElementById('model-menu');
+            const selectedModelName = document.getElementById('selected-model-name');
+            const modelOptions = document.querySelectorAll('.model-option');
+            const hiddenSelect = document.getElementById('model-selector');
+
+            // --- Send Button Enable/Disable ---
+            chatInput.addEventListener('input', () => {
+                if (chatInput.value.trim() !== '') {
+                    sendButton.disabled = false;
+                    sendButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    sendButton.classList.add('hover:bg-gray-600');
+                } else {
+                    sendButton.disabled = true;
+                    sendButton.classList.add('opacity-50', 'cursor-not-allowed');
+                    sendButton.classList.remove('hover:bg-gray-600');
+                }
+            });
+
+            // --- Custom Dropdown Logic ---
+            modelSelectorBtn.addEventListener('click', () => {
+                const isHidden = modelMenu.classList.contains('hidden');
+                if (isHidden) {
+                    modelMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        modelMenu.classList.remove('opacity-0', 'scale-95');
+                    }, 10);
+                } else {
+                    modelMenu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => {
+                        modelMenu.classList.add('hidden');
+                    }, 200);
+                }
+            });
+
+            function updateUIForSelection(value, name) {
+                // Update UI text and checkmarks
+                selectedModelName.textContent = name;
+                modelOptions.forEach(opt => {
+                    const checkmark = opt.querySelector('.lucide-check');
+                    if (opt.getAttribute('data-value') === value) {
+                        checkmark.classList.remove('hidden');
+                    } else {
+                        checkmark.classList.add('hidden');
+                    }
+                });
+                
+                // Update hidden select for backend
+                hiddenSelect.value = value;
+                
+                // Save preference to session storage
+                sessionStorage.setItem('selectedModel', value);
+            }
+
+            modelOptions.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const value = option.getAttribute('data-value');
+                    const name = option.querySelector('p').textContent;
+                    
+                    updateUIForSelection(value, name);
+                    
+                    // Close menu
+                    modelMenu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => modelMenu.classList.add('hidden'), 200);
+                });
+            });
+
+            // --- Load Preference on Page Load ---
+            const savedModel = sessionStorage.getItem('selectedModel');
+            if (savedModel) {
+                const savedOption = document.querySelector(`.model-option[data-value="${savedModel}"]`);
+                if (savedOption) {
+                    const name = savedOption.querySelector('p').textContent;
+                    updateUIForSelection(savedModel, name);
+                }
+            }
+
+            document.addEventListener('click', (event) => {
+                if (!modelSelectorBtn.contains(event.target) && !modelMenu.contains(event.target)) {
+                    modelMenu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => modelMenu.classList.add('hidden'), 200);
+                }
+            });
+
+            // --- Message Sending Logic ---
+            const handleSendMessage = async () => {
+                const messageText = chatInput.value.trim();
+                if (messageText === '') return;
+
+                if (welcomeScreen) {
+                    welcomeScreen.style.display = 'none';
+                }
+                
+                errorMessageDiv.classList.add('hidden'); // Hide previous errors
+                appendMessage('user', messageText);
+                chatInput.value = '';
+                chatInput.dispatchEvent(new Event('input')); // Disable button
+
+                // Display loading indicator
+                const loadingIndicator = appendMessage('bot', '<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>');
+
+                try {
+                    const selectedProvider = hiddenSelect.value;
+                    const response = await fetch('/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            query: messageText,
+                            provider: selectedProvider
+                        }),
+                    });
+
+                    // Remove loading indicator
+                    loadingIndicator.remove();
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (data.error) {
+                        errorMessageDiv.textContent = `Error: ${data.error}`;
+                        errorMessageDiv.classList.remove('hidden');
+                        appendMessage('bot', 'Sorry, an error occurred. Please check the error message above.');
+                    } else {
+                        appendMessage('bot', data.result);
+                    }
+
+                } catch (error) {
+                    loadingIndicator.remove();
+                    const errorText = `Failed to connect to the server. Please check your connection and try again. Details: ${error.message}`;
+                    errorMessageDiv.textContent = errorText;
+                    errorMessageDiv.classList.remove('hidden');
+                    appendMessage('bot', 'Sorry, I couldn\'t connect to the agent.');
+                }
+            };
+
+            sendButton.addEventListener('click', handleSendMessage);
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage();
+                }
+            });
+
+            function appendMessage(sender, text) {
+                const messageDiv = document.createElement('div');
+                let messageContent = '';
+
+                if (sender === 'user') {
+                    messageDiv.className = 'flex items-start justify-end space-x-4 max-w-3xl ml-auto message-fade-in mb-6';
+                    messageContent = `
+                        <div class="bg-blue-600/50 rounded-lg p-4 order-1">${text}</div>
+                        <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-gray-700 rounded-full order-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    `;
+                } else {
+                    messageDiv.className = 'flex items-start space-x-4 max-w-3xl message-fade-in mb-6';
+                    messageContent = `
+                        <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                        </div>
+                        <div class="bg-gray-800/50 rounded-lg p-4">${text}</div>
+                    `;
+                }
+                
+                messageDiv.innerHTML = messageContent;
+                chatBox.appendChild(messageDiv);
+                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+                return messageDiv;
+            }
+        });
+    </script>
 </body>
 </html>
 
